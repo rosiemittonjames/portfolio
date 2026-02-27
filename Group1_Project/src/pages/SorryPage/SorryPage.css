@@ -1,0 +1,9 @@
+.sorry-text {
+  font-family: "Roboto Mono";
+  font-size: 35px;
+  font-weight: 500;
+}
+
+.sorry-heading {
+  text-transform: capitalize;
+}

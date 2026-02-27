@@ -1,0 +1,25 @@
+.page-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.next-button {
+    color: #fff;
+    padding: 10px 100px;
+    background-color: #0b6048;
+    border: solid 3px #0b6048;
+    border-radius: 50px;
+    font-family: "HeadingFont";
+}
+
+.next-button:hover {
+    color: #fff;
+    padding: 10px 100px;
+    background-color: #0b6048;
+    border: solid 3px #fff;
+    border-radius: 50px;
+    font-family: "HeadingFont";
+}

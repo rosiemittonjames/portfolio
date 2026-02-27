@@ -1,0 +1,51 @@
+.rc-slider {
+  margin-bottom: 60px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  width: 100%;
+}
+
+.rc-slider-rail {
+  background-color: #ec839e;
+  height: 30px;
+}
+
+.rc-slider-track {
+  background-color: #0b6048;
+  height: 30px;
+}
+
+.rc-slider-handle:hover,
+.rc-slider-handle:active,
+.rc-slider-handle:focus {
+  border-color: #043826;
+  box-shadow: 0 0 5px black;
+}
+
+.rc-slider-mark-text {
+  color: #043826;
+  font-size: 20px;
+  margin-top: 40px;
+  font-family: "Bodyfont";
+}
+
+.rc-slider-handle {
+  background-color: white;
+  border-color: #0b6048;
+  width: 29px;
+  height: 29px;
+  bottom: -20px;
+}
+
+.rc-slider-dot {
+  border: 2px solid #043826;
+  background-color: #f4b8c7;
+  width: 29px;
+  height: 29px;
+  bottom: -25px;
+}
+
+.rc-slider-dot-active {
+  background-color: #0b6048;
+}

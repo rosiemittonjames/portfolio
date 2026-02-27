@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+.teammate-name {
+    font-weight: bold;
+    color: hotpink;
+}

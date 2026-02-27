@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+.heart-img {
+  width: 70%;
+  opacity: 30%;
+  margin: 0 auto;
+}
+
+.container {
+  position: relative;
+  margin: 0 auto;
+}
+.hero {
+  position: absolute;
+  top: 20%;
+  pointer-events: auto;
+}

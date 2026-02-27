@@ -1,0 +1,20 @@
+.swipeCardContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.swipeCard {
+  border-radius: 10px;
+  border: 10px solid white;
+  background-color: white;
+}
+
+.swipeCard img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}

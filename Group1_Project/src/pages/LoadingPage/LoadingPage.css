@@ -1,0 +1,10 @@
+.loading-text {
+  font-size: 20px;
+  text-shadow: none;
+}
+
+.loading-image {
+  animation: spin 8s linear infinite;
+  height: 300px;
+  width: 300px;
+}
