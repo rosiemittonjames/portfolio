@@ -1,0 +1,121 @@
+body {
+    text-align: center;
+  }
+  
+  .top-section {
+    background-color: #e8002d;
+    color: white;
+    padding: 25px;
+    border-radius: 15px;
+  }
+  
+  h1 {
+    font-size: 60px;
+    font-family: sans-serif;
+    margin: 40px auto 30px;
+    padding: 20px 40px;
+  }
+  
+  h2 {
+    font-size: 40px;
+    font-family: sans-serif;
+    color: white;
+    background-color: #e8002d;
+    margin: 50px auto 30px;
+    padding: 20px 40px;
+    border-radius: 15px;
+    display: inline-block;
+  }
+  
+  h3 {
+    font-size: 35px;
+    font-family: sans-serif;
+    color: white;
+    background-color: #e8002d;
+    margin: 10px auto 30px;
+    padding: 20px 40px;
+    border-radius: 15px;
+    display: inline-block;
+  }
+  
+  p {
+    font-size: 23px;
+    font-family: sans-serif;
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+  
+  label {
+    font-size: 20px;
+    font-family: sans-serif;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  
+  #teamName {
+    font-family: sans-serif;
+    font-size: 18px;
+    width: 50%;
+    padding: 15px;
+    margin: 10px 0 45px 0;
+    border-radius: 12px;
+    display: inline-block;
+    background: #f8f9fa;
+    border: 1.5px solid black;
+  }
+  
+  #driver1,
+  #driver2,
+  #driver3 {
+    font-family: sans-serif;
+    font-size: 15px;
+    width: 15%;
+    padding: 10px;
+    margin: 10px 0 45px 0;
+    border-radius: 12px;
+    display: inline-block;
+    background: #f8f9fa;
+    border: 1.5px solid black;
+    cursor: pointer;
+  }
+  
+  #constructor {
+    font-family: sans-serif;
+    font-size: 15px;
+    width: 27%;
+    padding: 10px;
+    margin: 10px 0 45px 0;
+    border-radius: 12px;
+    display: inline-block;
+    background: #f8f9fa;
+    border: 1.5px solid black;
+    cursor: pointer;
+  }
+  
+  .submit {
+    font-family: sans-serif;
+    font-size: 22px;
+    color: white;
+    width: 50%;
+    padding: 15px;
+    border-radius: 12px;
+    display: inline-block;
+    background: #e8002d;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 50px;
+  }
+  
+  .submit:hover {
+    background-color: black;
+    color: white;
+  }
+  
+  #car-animation {
+    position: fixed;
+    bottom: 15px;
+    left: -100px;
+    font-size: 40px;
+    transition: left 2s linear;
+    transform: scale(-1, 1);
+  }

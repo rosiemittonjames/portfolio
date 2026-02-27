@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>F1 Fantasty Team Simulator</title>
+        <link rel="stylesheet" href="assignment-two.css" />
+    </head>
+
+    <body>
+        <div class="top-section">
+            <h1>Formula 1 Fantasy Team Simulator</h1>
+
+            <p>You have a budget of £70 million.</p>
+
+            <p>
+                Your aim is to try and get as many points as possible so that
+                you can be a contender to win the world championship, but you
+                can only <u>pick 3 different drivers and one team.</u>
+            </p>
+        </div>
+
+        <h2>Build your team below</h2>
+
+        <br />
+
+        <label for="teamName"><b>Enter your team name:</b></label>
+
+        <br />
+
+        <input type="text" id="teamName" placeholder="Your team name" />
+
+        <br />
+
+        <h3>Remaining Budget: £<span id="remaining"></span>M</h3>
+
+        <br />
+
+        <p>Remember you can't select the same driver more than once.</p>
+
+        <label for="driver1">Select Driver #1:</label>
+
+        <select name="driver1" id="driver1">
+            <option value="driver-not-selected">Driver Not Selected</option>
+            <option value="o-piastri">O.Piastri - £27M</option>
+            <option value="l-norris">L.Norris - £31.2M</option>
+            <option value="m-verstappen">M.Verstappen - £28.2M</option>
+            <option value="g-russel">G.Russel - £22.6M</option>
+            <option value="c-leclerc">C.Leclerc - £23.2M</option>
+            <option value="l-hamilton">L.Hamilton - £23.3M</option>
+            <option value="n-hulkenberg">N.Hulkenberg - £9.2M</option>
+            <option value="k-antonelli">K.Antonelli - £15.1M</option>
+            <option value="a-albon">A.Albon - £12.4M</option>
+            <option value="l-stroll">L.Stroll - £10.5M</option>
+            <option value="e-ocon">E.Ocon - £8.5M</option>
+            <option value="o-bearman">O.Bearman - £6.7M</option>
+            <option value="y-tsunoda">Y.Tsunoda - £10M</option>
+            <option value="i-hadjar">I.Hadjar - £6.3M</option>
+            <option value="g-bortoleto">G.Bortoleto - £5.7M</option>
+            <option value="f-alonso">F.Alonso - £7.9M</option>
+            <option value="c-sainz">C.Sainz - £5.1M</option>
+            <option value="l-lawson">L.Lawson - £5.3M</option>
+            <option value="p-gasly">P.Gasly - £4.5M</option>
+            <option value="f-colapinto">F.Colapinto - £4.5M</option>
+        </select>
+
+        <label for="driver2">Select Driver #2:</label>
+
+        <select name="driver2" id="driver2">
+            <option value="driver-not-selected">Driver Not Selected</option>
+            <option value="o-piastri">O.Piastri - £27M</option>
+            <option value="l-norris">L.Norris - £31.2M</option>
+            <option value="m-verstappen">M.Verstappen - £28.2M</option>
+            <option value="g-russel">G.Russel - £22.6M</option>
+            <option value="c-leclerc">C.Leclerc - £23.2M</option>
+            <option value="l-hamilton">L.Hamilton - £23.3M</option>
+            <option value="n-hulkenberg">N.Hulkenberg - £9.2M</option>
+            <option value="k-antonelli">K.Antonelli - £15.1M</option>
+            <option value="a-albon">A.Albon - £12.4M</option>
+            <option value="l-stroll">L.Stroll - £10.5M</option>
+            <option value="e-ocon">E.Ocon - £8.5M</option>
+            <option value="o-bearman">O.Bearman - £6.7M</option>
+            <option value="y-tsunoda">Y.Tsunoda - £10M</option>
+            <option value="i-hadjar">I.Hadjar - £6.3M</option>
+            <option value="g-bortoleto">G.Bortoleto - £5.7M</option>
+            <option value="f-alonso">F.Alonso - £7.9M</option>
+            <option value="c-sainz">C.Sainz - £5.1M</option>
+            <option value="l-lawson">L.Lawson - £5.3M</option>
+            <option value="p-gasly">P.Gasly - £4.5M</option>
+            <option value="f-colapinto">F.Colapinto - £4.5M</option>
+        </select>
+
+        <label for="driver3">Select Driver #3:</label>
+
+        <select name="driver3" id="driver3">
+            <option value="driver-not-selected">Driver Not Selected</option>
+            <option value="o-piastri">O.Piastri - £27M</option>
+            <option value="l-norris">L.Norris - £31.2M</option>
+            <option value="m-verstappen">M.Verstappen - £28.2M</option>
+            <option value="g-russel">G.Russel - £22.6M</option>
+            <option value="c-leclerc">C.Leclerc - £23.2M</option>
+            <option value="l-hamilton">L.Hamilton - £23.3M</option>
+            <option value="n-hulkenberg">N.Hulkenberg - £9.2M</option>
+            <option value="k-antonelli">K.Antonelli - £15.1M</option>
+            <option value="a-albon">A.Albon - £12.4M</option>
+            <option value="l-stroll">L.Stroll - £10.5M</option>
+            <option value="e-ocon">E.Ocon - £8.5M</option>
+            <option value="o-bearman">O.Bearman - £6.7M</option>
+            <option value="y-tsunoda">Y.Tsunoda - £10M</option>
+            <option value="i-hadjar">I.Hadjar - £6.3M</option>
+            <option value="g-bortoleto">G.Bortoleto - £5.7M</option>
+            <option value="f-alonso">F.Alonso - £7.9M</option>
+            <option value="c-sainz">C.Sainz - £5.1M</option>
+            <option value="l-lawson">L.Lawson - £5.3M</option>
+            <option value="p-gasly">P.Gasly - £4.5M</option>
+            <option value="f-colapinto">F.Colapinto - £4.5M</option>
+        </select>
+
+        <br />
+
+        <label for="constructor">Select Your Constructors Team:</label>
+
+        <select name="constructor" id="constructor">
+            <option value="constructor-not-selected">
+                Constructor Not Selected
+            </option>
+            <option value="mclaren">McLaren - £34.8M</option>
+            <option value="ferrari">Ferrari - £30.5M</option>
+            <option value="mercedes">Mercedes - £26.3M</option>
+            <option value="red-bull-racing">Red Bull Racing - £29M</option>
+            <option value="haas">Haas - £12.6M</option>
+            <option value="racing-bulls">Racing Bulls - £12.4M</option>
+            <option value="williams">Williams - £16.7M</option>
+            <option value="aston-martin">Aston Martin - £12.5M</option>
+            <option value="kick-sauber">Kick Sauber - £10.5M</option>
+            <option value="alpine">Alpine - £7.9M</option>
+        </select>
+
+        <br />
+
+        <button type="button" class="submit">Click Here To Go Racing!</button>
+
+        <script src="assignment-two.js"></script>
+
+        <div id="car-animation">🏎️</div>
+    </body>
+</html>
