@@ -1,0 +1,128 @@
+
+/* Media query for tablets */
+@media (min-width: 768px) {
+    .grid-container-flex {
+      font-size: 1.5rem;
+    }
+  
+  }
+  
+  /* Media query for desktops */
+  @media (min-width: 1024px) {
+    .grid-container-flex {
+      font-size: 2rem;
+    }
+  }
+  
+  img {
+    position: absolute; /* Positions it relative to the body */
+    top: 20px; /* Adjust the top margin */
+    left: 30px; /* Adjust the left margin */
+    width: 170px; /* Resize width */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
+  
+  h1 { 
+      color: #262626; 
+      font-family:'Libre Franklin', sans-serif; 
+      font-size: 3em;
+      margin-top: 50px;
+      margin-left: 20px;
+      margin-bottom: 2px;
+      text-align: center;
+  }
+  
+  h2 { 
+    color: #262626; 
+    font-family:'Libre Franklin', sans-serif; 
+    font-size: 1.5em;
+    margin-left: 20px;
+    margin-bottom: 30px;
+    text-align: left; 
+  }
+  
+  
+  p { 
+      color: #262626; 
+      font-family:'Libre Franklin', sans-serif; 
+      font-size: 1.5em;
+      margin-left: 20px;
+  }
+  
+          body {
+            background-image: linear-gradient(43deg, #FF7900, #FFB570, #FF97B0);
+              margin: 0; /* Remove default margin */
+              display: flex;
+              justify-content: center; /* Center horizontally */
+              align-items: center; /* Center vertically */
+              background-size: cover; /* Cover entire background */
+              background-position: center; /* Center the background image */
+              text-align: center; /* Center text inside the section */
+              position: relative;
+          }
+          .grid-container-flex {
+              display: flex;
+              flex-direction: column; /* Stack items vertically */
+              align-items: left; /* Center items horizontally */
+              padding: 20px;
+              color: white; /* Change text color for contrast */
+          }
+          .my-button {
+              padding: 10px 20px;
+              font-size: 1.2rem; /* Default font size */
+              background-color: #262626;
+              color: white;
+              border: none;
+              border-radius: 12px;
+              cursor: pointer;
+              transition: background-color 0.3s;
+              font-family:'Libre Franklin', sans-serif; 
+              margin-bottom: 30px;
+              margin-top: 20px;
+          }
+          .my-button:hover {
+            background-color: white;
+            color: #262626;
+            font-family:'Libre Franklin', sans-serif; 
+          } 
+  
+          /* Media query for tablets */
+          @media (min-width: 768px) {
+              .grid-container-flex {
+                  font-size: 1.5rem; /* Increase font size for tablets */
+              }
+              .my-button {
+                  font-size: 1.7rem; /* Larger button text */
+              }
+          }
+  
+          /* Media query for desktops */
+          @media (min-width: 1024px) {
+              .grid-container-flex {
+                  font-size: 2rem; /* Increase font size for desktops */
+              }
+              .my-button {
+                  font-size: 2rem; /* Larger button text */
+              }
+          }
+  
+          /* Media query for tablets */
+          @media (min-width: 768px) {
+            .grid-container-grid {
+                font-size: 1.5rem; /* Increase font size for tablets */
+            }
+            .my-button {
+                font-size: 1.7rem; /* Larger button text */
+            }
+        }
+  
+        /* Media query for desktops */
+        @media (min-width: 1024px) {
+            .grid-container-grid {
+                font-size: 2rem; /* Increase font size for desktops */
+            }
+            .my-button {
+                font-size: 2rem; /* Larger button text */
+            }
+        }

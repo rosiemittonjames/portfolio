@@ -1,0 +1,128 @@
+
+/* Media query for tablets */
+@media (min-width: 768px) {
+  .grid-container-flex {
+    font-size: 1.5rem;
+  }
+
+}
+
+/* Media query for desktops */
+@media (min-width: 1024px) {
+  .grid-container-flex {
+    font-size: 2rem;
+  }
+}
+
+img {
+  position: absolute; 
+  top: 20px; 
+  left: 30px; 
+  width: 170px; 
+  height: auto; 
+}
+
+
+h1 { 
+    color: #262626; 
+    font-family:'Libre Franklin', sans-serif; 
+    font-size: 4em;
+    margin-top: 270px;
+    margin-left: 20px;
+    margin-bottom: 2px;
+    text-align: left;
+}
+
+h2 { 
+  color: #262626; 
+  font-family:'Libre Franklin', sans-serif; 
+  font-size: 1.5em;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  text-align: left; 
+}
+
+
+p { 
+    color: #262626; 
+    font-family:'Libre Franklin', sans-serif; 
+    font-size: 1.5em;
+    margin-left: 20px;
+}
+
+        body {
+          background-image: linear-gradient(43deg, #FF7900, #FFB570, #FF97B0);
+            margin: 0; 
+            display: flex;
+            justify-content: center; 
+            align-items: center; 
+            background-size: cover; 
+            background-position: center; 
+            text-align: center; 
+            position: relative;
+        }
+        .grid-container-flex {
+            display: flex;
+            flex-direction: column; 
+            align-items: left; 
+            padding: 20px;
+            color: white;
+        }
+        .my-button {
+            padding: 10px 20px;
+            font-size: 1.2rem; 
+            background-color: #262626;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-family:'Libre Franklin', sans-serif; 
+            margin-bottom: 30px;
+            margin-top: 20px;
+        }
+        .my-button:hover {
+          background-color: white;
+          color: #262626;
+          font-family:'Libre Franklin', sans-serif; 
+        } 
+
+        /* Media query for tablets */
+        @media (min-width: 768px) {
+            .grid-container-flex {
+                font-size: 1.5rem; 
+            }
+            .my-button {
+                font-size: 1.7rem; 
+            }
+        }
+
+        /* Media query for desktops */
+        @media (min-width: 1024px) {
+            .grid-container-flex {
+                font-size: 2rem; 
+            }
+            .my-button {
+                font-size: 1.8rem; 
+            }
+        }
+
+        /* Media query for tablets */
+        @media (min-width: 768px) {
+          .grid-container-grid {
+              font-size: 1.5rem;
+          }
+          .my-button {
+              font-size: 1.7rem; 
+          }
+      }
+
+      /* Media query for desktops */
+      @media (min-width: 1024px) {
+          .grid-container-grid {
+              font-size: 2rem; 
+          }
+          .my-button {
+              font-size: 2rem; 
+          }
+      }

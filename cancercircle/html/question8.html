@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Similarities</title>
+    <link href="question8.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <main>
+        <section class="grid-container-flex">
+            <div class="rectangle"></div> 
+
+            <div class="top-right"><h2><a href="question8.html">skip</a></h2>
+            </div>
+
+            <div class="container">
+                <h1>what similarities are important to you?</h1>
+
+                <p><b>select up to 3 below</b></p>
+
+                <input type="text" id="searchInterests" placeholder="Search interests..." onkeyup="filterInterests()">
+
+
+                <form id="questionForm" action="createprofile.html" method="GET">
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="age">age</button>
+                        <button type="button" class="interestsbtn" data-value="culture">culture</button>
+                        <button type="button" class="interestsbtn" data-value="side effects">side effects</button>
+                        
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="hobbies">hobbies</button>
+                        <button type="button" class="interestsbtn" data-value="type of cancer">type of cancer</button>
+                        <button type="button" class="interestsbtn" data-value="mental health">mental health</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="stage of cancer">stage of cancer</button>
+                        <button type="button" class="interestsbtn" data-value="religion">religion</button>
+                    </div>
+
+                    <!-- Hidden input to store selected value -->
+                    <input type="hidden" name="stage" id="selectedInterests">
+
+                    <!-- Next button -->
+                    <button type="submit" class="nextbtn">Next</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyBGC6doZP1qWpUEZdCNpyR8ftq9EgOldns",
+          authDomain: "cancer-circle.firebaseapp.com",
+          projectId: "cancer-circle",
+          storageBucket: "cancer-circle.firebasestorage.app",
+          messagingSenderId: "639024686722",
+          appId: "1:639024686722:web:e5c43e4adb511428e4769b",
+          measurementId: "G-WX4SYWLDNN"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script> 
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const interestsButtons = document.querySelectorAll(".interestsbtn");
+            const selectedInterestsInput = document.getElementById("selectedInterests");
+            const form = document.getElementById("questionForm");
+            let selectedCount = 0; // Track the number of selected buttons
+
+            interestsButtons.forEach(button => {
+                button.addEventListener("click", function() {
+                    // Toggle selection of the clicked button
+                    if (this.classList.contains("selected")) {
+                        // Deselect button if already selected
+                        this.classList.remove("selected");
+                        selectedCount--;
+                    } else {
+                        // Select button if not already selected
+                        if (selectedCount < 3) {
+                            this.classList.add("selected");
+                            selectedCount++;
+                        } else {
+                            alert("You can select up to 3 interests.");
+                            return;
+                        }
+                    }
+
+                    // Update the hidden input with the selected values
+                    const selectedValues = [...document.querySelectorAll(".interestsbtn.selected")].map(btn => btn.getAttribute("data-value"));
+                    selectedInterestsInput.value = selectedValues.join(",");
+                });
+            });
+
+            form.addEventListener("submit", function(event) {
+                if (selectedCount === 0) {
+                    event.preventDefault(); // Prevent form submission if no values are selected
+                    alert("Please select at least one interest before proceeding.");
+                }
+            });
+        });
+
+        function filterInterests() {
+    let input = document.getElementById("searchInterests").value.toLowerCase();
+    let buttons = document.querySelectorAll(".interestsbtn");
+
+    buttons.forEach(button => {
+        let text = button.innerText.toLowerCase();
+        if (text.includes(input)) {
+            button.style.display = "inline-block"; // Show matching items
+        } else {
+            button.style.display = "none"; // Hide non-matching items
+        }
+    });
+}
+    </script>
+
+</body>
+</html>

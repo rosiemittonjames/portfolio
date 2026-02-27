@@ -1,0 +1,728 @@
+<?php
+session_start();
+
+$db_hostname = 'localhost';
+$db_database = 'bn21rcmj_cancercircle';
+$db_username = 'bn21rcmj_user';
+$db_password = '?[9Wm,)Y_AKB';
+$db_connection_string = "mysql:host=$db_hostname;dbname=$db_database";
+
+try {
+    $conn = new PDO($db_connection_string, $db_username, $db_password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $userId = $_SESSION['user_id'] ?? null;
+
+    if ($userId && $_SERVER['REQUEST_METHOD'] === 'POST') {
+  
+        $allowedFields = ['name', 'email', 'number', 'age', 'gender', 'location', 'ethnicity', 'language', 'connection', 'cancertype', 'stage', 'treatment', 'technologycomfort', 'similarities', 'interests'];
+
+        foreach ($_POST as $key => $value) {
+            if (in_array($key, $allowedFields)) {
+                $stmt = $conn->prepare("UPDATE createaccount SET $key = :value WHERE id = :id");
+                $stmt->bindParam(':value', $value);
+                $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
+                $stmt->execute();
+            }
+        }
+    }
+
+
+    $userData = [];
+    if ($userId) {
+        $stmt = $conn->prepare("SELECT * FROM createaccount WHERE id = :id");
+        $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+        $userData = $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    $conn = null;
+} catch(PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preferences</title>
+    <link href="preferences.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+</head>
+<body>
+    <main>
+        <section class="grid-container-flex">
+
+                <h1>Your Preferences</h1>
+
+                <p>Below you can change any of your previous answers</p>
+
+            <form action="preferences.php" method="POST" onsubmit="return validateForm(event)">
+
+                    <label for="email"><b>Email</b></label>
+                    <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($userData['contactemail'] ?? ''); ?>">
+
+                    <label for="number"><b>Phone Number</b></label>
+                    <input type="tel" id="number" name="number" value="<?php echo htmlspecialchars($userData['contactnumber'] ?? ''); ?>">
+                    <button type="submit" class="nextbtn">Update</button>
+                </form>
+
+                <form method="POST">
+                    <label for="name"><b>First name</b></label>
+                    <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($userData['name'] ?? ''); ?>">
+                    <button type="submit" class="nextbtn">Update</button>
+                </form>
+
+                <form method="POST">
+                    <label for="age"><b>How old are you?</b></label>
+                    <input type="number" id="age" name="age" value="<?php echo htmlspecialchars($userData['age'] ?? ''); ?>">
+                    <button type="submit" class="nextbtn">Update</button>
+                </form>
+
+                <form method="POST">
+                    <input type="hidden" name="gender" id="selectedGender" value="<?php echo htmlspecialchars($userData['gender'] ?? ''); ?>">
+                    <div class="connection-row">
+                        <label><b>What's your gender?</b></label>
+                      </div>
+                      <div class="gender-row">
+                            <button type="button" class="genderbtn" data-value="female">Female</button>
+                            <button type="button" class="genderbtn"data-value="male">Male</button> 
+                        </div>
+                        <div class="gender-row"></div>
+                            <button type="button" class="genderbtn" data-value="transgender">Transgender</button>
+                            <button type="button" class="genderbtn" data-value="non-binary">Non-binary</button>
+                        </div>
+                        <div class="gender-row"></div>
+                            <button type="button" class="genderbtn" data-value="prefer not to say">Prefer not to say</button>
+                            <button type="button" class="genderbtn" data-value="other">Other</button>
+                        </div>
+                
+                    <button type="submit" class="nextbtn">Update</button>
+                </form>
+
+
+                <form method="POST">
+                    <label for="location"><b>Where do you live?</b></label>
+                    <input type="text" id="location" name="location" value="<?php echo htmlspecialchars($userData['location'] ?? ''); ?>">
+                    <button type="submit" class="nextbtn">Update</button>
+                </form>
+
+                <form method="POST">
+                    <label for="ethnicity"><b>What's your ethnicity?</b></label>
+                    <select id="ethnicity" name="ethnicity">
+                    <option value="">Select an ethnicity</option>
+                    <option value="White" <?= (isset($userData['ethnicity']) && $userData['ethnicity'] == 'white') ? 'selected' : '' ?>>White</option>
+                    <option value="Black_or_African_American" <?= (isset($userData['ethnicity']) && $userData['ethnicity'] == 'black_or_african_american') ? 'selected' : '' ?>>Black or African American</option>
+                    <option value="Asian" <?= (isset($userData['ethnicity']) && $userData['ethnicity'] == 'asian') ? 'selected' : '' ?>>Asian</option>
+                    <option value="Hispanic_or_Latino" <?= (isset($userData['ethnicity']) && $userData['ethnicity'] == 'hispanic_or_latino') ? 'selected' : '' ?>>Hispanic or Latino</option>
+                    <option value="Other" <?= (isset($userData['ethnicity']) && $userData['ethnicity'] == 'other') ? 'selected' : '' ?>>Other</option>
+                </select>
+                <button type="submit" class="nextbtn">Update</button>
+            </form>
+
+            <form method="POST">
+                <label for="language"><b>What's your first language?</b></label>
+                <select id="language" name="language">
+                    <option value="">Select a language</option>
+                    <?php
+                    $languages = [
+                        "Albanian", "Amharic", "Arabic", "Armenian", "Bengali", "Bosnian", "Bulgarian", "Cantonese",
+                        "Croatian", "Czech", "Dari", "English", "Farsi", "French", "German", "Greek", "Gujarati", "Hebrew", "Hindi",
+                        "Hungarian", "Italian", "Japanese", "Korean", "Kurdish", "Lithuanian", "Mandarin", "Nepali",
+                        "Pashto", "Polish", "Portuguese", "Punjabi", "Romanian", "Russian", "Serbian", "Slovak", "Somali",
+                        "Spanish", "Swahili", "Tamil", "Thai", "Tigrinya", "Turkish", "Ukrainian", "Urdu", "Vietnamese",
+                        "Welsh", "Yoruba", "Zulu", "Other"
+                    ];
+
+                    $currentLanguage = strtolower($userData['language'] ?? '');
+                    foreach ($languages as $lang) {
+                        $selected = (strtolower($lang) == $currentLanguage) ? 'selected' : '';
+                        echo "<option value=\"$lang\" $selected>$lang</option>";
+                    }
+                    ?>
+                </select>
+                <button type="submit" class="nextbtn">Update</button>
+            </form>
+
+                <form method="POST">
+                    <input type="hidden" name="gender" id="selectedConnection" value="<?php echo htmlspecialchars($userData['connection'] ?? ''); ?>">
+                    <div class="connection-row"><label><b>What's your main connection to cancer?</b></label></div> 
+                    <div class="connection-row">
+                        <button type="button" class="connectionbtn" data-value="Cancer Journey" data-url="question5a.php">I'm currently on my cancer journey</button>
+                    </div>
+                    <div class="connection-row">
+                        <button type="button" class="connectionbtn" data-value="Cancer Survivor" data-url="question5b.php">I'm a cancer survivor</button>
+                    </div>
+                    <div class="connection-row">
+                        <button type="button" class="connectionbtn" data-value="Caregiver" data-url="question5d.php">I'm a caregiver</button>
+                    </div>
+                    <div class="connection-row">
+                        <button type="button" class="connectionbtn" data-value="Family Member" data-url="question5c.php">I'm a family member</button>
+                    </div>
+                    <div class="connection-row">
+                        <button type="button" class="connectionbtn" data-value="Friend" data-url="question5e.php">I'm a friend</button>
+                    </div>
+
+                    <button type="button" class="nextbtn">Update</button>
+                  </form>
+
+                <form method="POST">
+                    <label for="cancertype"><b>What type of cancer do you have?</b></label>
+                    <input type="text" id="cancertype" name="cancertype" value="<?php echo htmlspecialchars($userData['cancertype'] ?? ''); ?>">
+                    <button type="submit" class="nextbtn">Update</button>
+                </form>
+
+                <form method="POST">
+                    <input type="hidden" name="stage" id="selectedStage" value="<?php echo htmlspecialchars($userData['stage'] ?? ''); ?>">
+                    <div class="connection-row">
+                        <label><b>Stage of cancer (if known)</b></label>
+                      </div>
+                      <div class="connection-row">
+                        <button type="button" class="connectionbtn" data-value="1">1</button>
+                        <button type="button" class="connectionbtn" data-value="2">2</button>
+                        <button type="button" class="connectionbtn" data-value="3">3</button>
+                        <button type="button" class="connectionbtn" data-value="4">4</button>
+                      </div>
+
+                    <button type="button" class="nextbtn">Update</button>
+                  </form>
+
+                  <form method="POST">
+                    <label for="stagejourney"><b>What stage are you at in your journey?</b></label>
+                    <select id="stagejourney" name="stagejourney">
+                        <option value="">Select a stage</option>
+                        <option value="Just Diagnosed" <?php if (($userData['stagejourney'] ?? '') == 'Just Diagnosed') echo 'selected'; ?>>Just Diagnosed</option>
+                        <option value="In Treatment" <?php if (($userData['stagejourney'] ?? '') == 'In Treatment') echo 'selected'; ?>>In Treatment</option>
+                        <option value="Just Finished Treatment" <?php if (($userData['stagejourney'] ?? '') == 'Just Finished Treatment') echo 'selected'; ?>>Just Finished Treatment</option>
+                        <option value="In Remission" <?php if (($userData['stagejourney'] ?? '') == 'In Remission') echo 'selected'; ?>>In Remission</option>
+                        <option value="Living with Cancer" <?php if (($userData['stagejourney'] ?? '') == 'Living with Cancer') echo 'selected'; ?>>Living with Cancer</option>
+                        <option value="Terminal" <?php if (($userData['stagejourney'] ?? '') == 'Terminal') echo 'selected'; ?>>Terminal</option>
+                        <option value="Other" <?php if (($userData['stagejourney'] ?? '') == 'Other') echo 'selected'; ?>>Other</option>
+                    </select>
+
+                    <button type="submit" class="nextbtn">Update</button>
+                    </form>
+
+                <form method="POST">
+                    <label for="treatment"><b>What treatments are you having?</b></label>
+                    <input type="text" id="treatment" name="treatment" value="<?php echo htmlspecialchars($userData['treatment'] ?? ''); ?>">
+                    <button type="submit" class="nextbtn">Update</button>
+                </form>
+
+                <form method="POST">
+                    <input type="hidden" name="technologycomfort" id="selectedTechnologycomfort" value="<?php echo htmlspecialchars($userData['technologycomfort'] ?? ''); ?>">
+                    <div class="connection-row">
+                        <label><b>How comfortable you're with technology?</b></label>
+                      </div>
+                <div class="label-row">
+                    <span class="left-label"><b>Not very</b></span>
+                    <span class="right-label"><b>Very</b></span>
+                </div>
+                    <div class="connection-row">
+                        <button type="button" class="connectionbtn" data-value="1">1</button>
+                        <button type="button" class="connectionbtn" data-value="2">2</button>
+                        <button type="button" class="connectionbtn" data-value="3">3</button>
+                        <button type="button" class="connectionbtn" data-value="4">4</button>
+                        <button type="button" class="connectionbtn" data-value="5">5</button>
+                    </div>
+                    <button type="submit" class="nextbtn">Update</button>
+                </form>
+
+                <form method="POST">
+                <input type="hidden" name="connection_preference" id="selectedConnection" value="<?php echo htmlspecialchars($userData['connection_preference'] ?? ''); ?>">
+
+                <div class="connection-row">
+                    <label><b>Do you want to eventually meet others or just stay online?</b></label>
+                </div>
+
+                <div class="connection-row">
+                    <button type="button" class="connectionbtn" data-value="Meet Others In-person">Meet Others In-person</button>
+                </div>
+
+                <div class="connection-row">
+                    <button type="button" class="connectionbtn" data-value="Only Connect Online">Only Connect Online</button>
+                </div>
+
+                <div class="connection-row">
+                    <button type="button" class="connectionbtn" data-value="Connect Online & In-Person">Connect Online & In-Person</button>
+                </div>
+
+                <div class="connection-row">
+                    <button type="button" class="connectionbtn" data-value="I'm Not Sure">I'm Not Sure</button>
+                </div>
+
+                <button type="submit" class="nextbtn">Update</button>
+            </form>
+
+                <form method="POST">
+                    <input type="hidden" name="similarities" id="selectedSimilarities" value="<?php echo htmlspecialchars($userData['similarities'] ?? ''); ?>">
+                    <div class="connection-row">
+                        <label><b>What similarities are important to you?</b></label>
+                      </div>
+                      <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Age">Age</button>
+                        <button type="button" class="interestsbtn" data-value="Culture">Culture</button>
+                        
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Side Effects">Side Effects</button>
+                        <button type="button" class="interestsbtn" data-value="Type of Cancer">Type of Cancer</button>
+                        
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Hobbies">Hobbies</button>
+                        <button type="button" class="interestsbtn" data-value="Mental Health">Mental Health</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Stage of Cancer">Stage of Cancer</button>
+                        <button type="button" class="interestsbtn" data-value="Religion">Religion</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Stage of Journey">Stage of Journey</button>
+                        <button type="button" class="interestsbtn" data-value="Treatment">Treatment</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Relationship to Patient">Relationship to Patient</button>
+                        <button type="button" class="interestsbtn" data-value="Location">Location</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Navigating My Journey">Navigating My Journey</button>
+                        <button type="button" class="interestsbtn" data-value="Wellness">Wellness</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Diagnosis Story">Diagnosis Story</button>
+                        <button type="button" class="interestsbtn" data-value="Survivorship">Survivorship</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Caregiving Experience">Caregiving Experience</button>
+                        <button type="button" class="interestsbtn" data-value="Nutrition">Nutrition</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Financal Impact">Financial Impact</button>
+                        <button type="button" class="interestsbtn" data-value="Parenting">Parenting</button>
+                    </div>
+                        <button type="submit" class="nextbtn">Update</button>
+                </form>
+
+                <form method="POST">
+                    <input type="hidden" name="interests" id="selectedInterests" value="<?php echo htmlspecialchars($userData['interests'] ?? ''); ?>">
+                    
+                    <div class="connection-row">
+                        <label><b>What are your interests and hobbies?</b></label>
+                      </div>
+
+                    <input type="text" id="searchInterests" title="Search Interests" placeholder="Search interests..." onkeyup="filterInterests()">
+
+                    <h2>Sports and Fitness</h2>
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Dancing">Dancing</button>
+                        <button type="button" class="interestsbtn" data-value="Exercise">Exercise</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Fitness">Fitness</button>
+                        <button type="button" class="interestsbtn" data-value="Fishing">Fishing</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Golf">Golf</button>
+                        <button type="button" class="interestsbtn" data-value="Horse Riding">Horse Riding</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Hiking">Hiking</button>
+                        <button type="button" class="interestsbtn" data-value="Health & Wellness">Health & Wellness</button>
+                    </div>
+
+                    <div class="interests-row">
+                    <button type="button" class="interestsbtn" data-value="Jogging">Jogging</button>
+                        <button type="button" class="interestsbtn" data-value="Kayaking">Kayaking</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Mountain Biking">Mountain Biking</button>
+                        <button type="button" class="interestsbtn" data-value="Padel">Padel</button>
+                    </div>
+
+                    <div class="interests-row">
+                    <button type="button" class="interestsbtn" data-value="Pilates">Pilates</button>
+                        <button type="button" class="interestsbtn" data-value="Running">Running</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Rowing">Rowing</button>
+                        <button type="button" class="interestsbtn" data-value="Rugby">Rugby</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Sports">Sports</button>
+                        <button type="button" class="interestsbtn" data-value="Tennis">Tennis</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Table Tennis">Table Tennis</button>
+                    </div>
+
+                    <h2>Wellness & Self-Care</h2>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Mindfulness">Mindfulness</button>
+                        <button type="button" class="interestsbtn" data-value="Meditation">Meditation</button>
+                    </div>
+
+                    <div class="interests-row">
+                    <button type="button" class="interestsbtn" data-value="Nutrition">Nutrition</button>
+                        <button type="button" class="interestsbtn" data-value="Journalling">Journalling</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Spa">Spa</button>
+                        <button type="button" class="interestsbtn" data-value="Skincare">Skincare</button>
+                    </div>
+
+                    <h2>Arts & Creativity</h2>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Origami">Origami</button>
+                        <button type="button" class="interestsbtn" data-value="Photography">Photography</button>
+                    </div>
+
+                    <div class="interests-row">
+                    <button type="button" class="interestsbtn" data-value="Painting">Painting</button>
+                        <button type="button" class="interestsbtn" data-value="Poetry">Poetry</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Writing">Writing</button>
+                        <button type="button" class="interestsbtn" data-value="Kitting">Knitting</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Sewing">Sewing</button>
+                        <button type="button" class="interestsbtn" data-value="Crochet">Crochet</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Drawing">Drawing</button>
+                    </div>
+
+                    <h2>Digital Creativity</h2>
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Coding">Coding</button>
+                        <button type="button" class="interestsbtn" data-value="Graphic Design">Graphic Design</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Photography">Photography</button>
+                        <button type="button" class="interestsbtn" data-value="Photo Editing">Photo Editing</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Filmmaking">Filmmaking</button>
+                        <button type="button" class="interestsbtn" data-value="Podcasting">Podcasting</button>
+                    </div>
+
+                    <div class="interests-row">
+                    <button type="button" class="interestsbtn" data-value="Video Editing">Video Editing</button>
+                        <button type="button" class="interestsbtn" data-value="Blogging">Blogging</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Vlogging">Vlogging</button>
+                        <button type="button" class="interestsbtn" data-value="Animation">Animation</button>
+                    </div>
+
+                    <div class="interests-row">
+                    <button type="button" class="interestsbtn" data-value="Digital Storytelling">Digital Storytelling</button>
+                    </div>
+
+                    <h2>Performing Arts & Music</h2>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Music">Music</button>
+                        <button type="button" class="interestsbtn" data-value="Opera">Opera</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Singing">Singing</button>
+                        <button type="button" class="interestsbtn" data-value="Theatre">Theatre</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Acting">Acting</button>
+                        <button type="button" class="interestsbtn" data-value="Comedy">Comedy</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Magic">Magic</button>
+                        <button type="button" class="interestsbtn" data-value="Playing Instruments">Playing Instruments</button>
+                    </div>
+
+                    <h2>Nature & Outdoor Life</h2>
+
+                    <div class="interests-row">
+                    <button type="button" class="interestsbtn" data-value="Environment">Environment</button>
+                    <button type="button" class="interestsbtn" data-value="Nature">Nature</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Gardening">Gardening</button>
+                        <button type="button" class="interestsbtn" data-value="Camping">Camping</button>
+                    </div>
+
+                    <div class="interests-row">
+                    <button type="button" class="interestsbtn" data-value="Outdoor Adventures">Outdoor Adventures</button>
+                    </div>
+
+                    <h2>Animals</h2>
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Zoo">Zoo</button>
+                        <button type="button" class="interestsbtn" data-value="Birdwatching">Birdwatching</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Wildlife">Wildlife</button>
+                        <button type="button" class="interestsbtn" data-value="Beekeeping">Beekeeping</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Pets">Pets</button>
+                        <button type="button" class="interestsbtn" data-value="Farm Animals">Farm Animals</button>
+                    </div>
+
+                    <h2>Learning & Knowledge</h2>
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Reading">Reading</button>
+                        <button type="button" class="interestsbtn" data-value="Audiobooks">Audiobooks</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Courses">Courses</button>
+                        <button type="button" class="interestsbtn" data-value="Languages">Languages</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Documentaries">Documentaries</button>
+                    </div>
+
+                    <h2>Activities</h2>
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Cinema">Cinema</button>
+                        <button type="button" class="interestsbtn" data-value="Shopping">Shopping</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Karaoke">Karaoke</button>
+                        <button type="button" class="interestsbtn" data-value="Live Music">Live Music</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Gaming">Gaming</button>
+                        <button type="button" class="interestsbtn" data-value="Travel">Travel</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Yachting">Yachting</button>
+                        <button type="button" class="interestsbtn" data-value="Clubbing">Clubbing</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Beauty & Makeup">Beauty & Makeup</button>
+                    </div>
+
+                    <h2>Food & Drink</h2>
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Eating Out">Eating Out</button>
+                        <button type="button" class="interestsbtn" data-value="Bars">Bars</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Cocktails">Cocktails</button>
+                        <button type="button" class="interestsbtn" data-value="Nutrition">Nutrition</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Healthy Eating">Healthy Eating</button>
+                        <button type="button" class="interestsbtn" data-value="Wine">Wine</button>
+                    </div>
+
+                    <h2>Automobiles</h2>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Motorbikes">Motorbikes</button>
+                        <button type="button" class="interestsbtn" data-value="Mechanics">Mechanics</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Car Racing">Car Racing</button>
+                        <button type="button" class="interestsbtn" data-value="Cars">Cars</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="Car Racing">Car Racing</button>
+                        <button type="button" class="interestsbtn" data-value="Motorbike Racing">Motorbike Racing</button>
+                    </div>
+                    <button type="submit" class="nextbtn">Update</button>
+                </form>
+
+            </form>
+
+            <ul class="navigation">
+                <li><a href="discovery.php">Discover</a></li>
+                <li><a href="profilesuggestions.php">Community</a></li>
+                <li><a href="profile.php">Profile</a></li>
+                <li><a href="preferences.php" class="active">Preferences</a></li>
+            </ul>
+
+    </section>
+
+</main>
+
+</body>
+</html>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const genderButtons = document.querySelectorAll(".genderbtn");
+    const selectedGenderInput = document.getElementById("selectedGender");
+    const savedGender = selectedGenderInput.value;
+
+
+    genderButtons.forEach(btn => {
+        if (btn.dataset.value === savedGender) {
+            btn.classList.add('selected');
+        }
+
+        btn.addEventListener('click', () => {
+
+            genderButtons.forEach(b => b.classList.remove('selected'));
+
+            btn.classList.add('selected');
+
+            selectedGenderInput.value = btn.dataset.value;
+        });
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const connectionButtons = document.querySelectorAll(".connectionbtn");
+    const selectedConnectionInput = document.getElementById("selectedConnection");
+    const savedConnection = selectedConnectionInput.value;
+
+
+    connectionButtons.forEach(btn => {
+        if (btn.dataset.value === savedConnection) {
+            btn.classList.add('selected');
+        }
+
+        btn.addEventListener('click', () => {
+
+            connectionButtons.forEach(b => b.classList.remove('selected'));
+
+            btn.classList.add('selected');
+
+            selectedConnectionInput.value = btn.dataset.value;
+        });
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const stageButtons = document.querySelectorAll(".connectionbtn");
+    const selectedStageInput = document.getElementById("selectedStage");
+    const savedStage = selectedStageInput.value;
+
+    stageButtons.forEach(btn => {
+        if (btn.dataset.value === savedStage) {
+            btn.classList.add('selected');
+        }
+
+        btn.addEventListener('click', () => {
+
+            stageButtons.forEach(b => b.classList.remove('selected'));
+ 
+            btn.classList.add('selected');
+
+            selectedStageInput.value = btn.dataset.value;
+        });
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const interestsButtons = document.querySelectorAll(".interestsbtn");
+    const selectedInterestsInput = document.getElementById("selectedInterests");
+    const savedInterests = selectedInterestsInput.value.split(',').map(item => item.trim());
+    let selectedCount = savedInterests.filter(Boolean).length;
+
+
+    interestsButtons.forEach(button => {
+        if (savedInterests.includes(button.dataset.value)) {
+            button.classList.add("selected");
+        }
+
+        button.addEventListener("click", function () {
+            if (this.classList.contains("selected")) {
+                this.classList.remove("selected");
+                selectedCount--;
+            } else {
+                if (selectedCount < 5) {
+                    this.classList.add("selected");
+                    selectedCount++;
+                } else {
+                    alert("You can select up to 5 interests.");
+                    return;
+                }
+            }
+
+            const selectedValues = [...document.querySelectorAll(".interestsbtn.selected")].map(btn => btn.dataset.value);
+            selectedInterestsInput.value = selectedValues.join(",");
+        });
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const similaritiesButtons = document.querySelectorAll(".interestsbtn");
+    const selectedSimilaritiesInput = document.getElementById("selectedSimilarities");
+    const savedSimilarities = selectedSimilaritiesInput.value.split(',').map(item => item.trim());
+    let selectedCount = savedSimilarities.filter(Boolean).length;
+
+
+    similaritiesButtons.forEach(button => {
+        if (savedSimilarities.includes(button.dataset.value)) {
+            button.classList.add("selected");
+        }
+
+        button.addEventListener("click", function () {
+            if (this.classList.contains("selected")) {
+                this.classList.remove("selected");
+                selectedCount--;
+            } else {
+                if (selectedCount < 5) {
+                    this.classList.add("selected");
+                    selectedCount++;
+                } else {
+                    alert("You can select up to 3 interests.");
+                    return;
+                }
+            }
+
+            const selectedValues = [...document.querySelectorAll(".interestsbtn.selected")].map(btn => btn.dataset.value);
+            selectedSimilaritiesInput.value = selectedValues.join(",");
+        });
+    });
+});
+
+</script>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interests & Hobbies</title>
+    <link href="question7.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <main>
+        <section class="grid-container-flex">
+            <div class="rectangle"></div> 
+
+            <div class="top-right"><h2><a href="question8.html">skip</a></h2>
+            </div>
+
+            <div class="container">
+                <h1>what are your interests and hobbies?</h1>
+
+                <p><b>select up to 5 below</b></p>
+
+                <input type="text" id="searchInterests" placeholder="Search interests..." onkeyup="filterInterests()">
+
+
+                <form id="questionForm" action="question8.html" method="GET">
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="art">art</button>
+                        <button type="button" class="interestsbtn" data-value="astronomy">astronomy</button>
+                        <button type="button" class="interestsbtn" data-value="animals">animals</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="acting">acting</button>
+                        <button type="button" class="interestsbtn" data-value="anime">anime</button>
+                        <button type="button" class="interestsbtn" data-value="automobibles">automobiles</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="baking">baking</button>
+                        <button type="button" class="interestsbtn" data-value="birdwatching">birdwatching</button>
+                        <button type="button" class="interestsbtn" data-value="board games">board games</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="books">books</button>
+                        <button type="button" class="interestsbtn" data-value="beauty & makeup">beauty & makeup</button>
+                        <button type="button" class="interestsbtn" data-value="cooking">cooking</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="crafts">crafts</button>
+                        <button type="button" class="interestsbtn" data-value="classical music">classical music</button>
+                        <button type="button" class="interestsbtn" data-value="chess">chess</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="comics">comics</button>
+                        <button type="button" class="interestsbtn" data-value="dancing">dancing</button>
+                        <button type="button" class="interestsbtn" data-value="DIY projects">DIY projects</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="drama">drama</button>
+                        <button type="button" class="interestsbtn" data-value="exercise">exercise</button>
+                        <button type="button" class="interestsbtn" data-value="environment">environment</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="eating out">eating out</button>
+                        <button type="button" class="interestsbtn" data-value="film & cinema">film & cinema</button>
+                        <button type="button" class="interestsbtn" data-value="fishing">fishing</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="fitness">fitness</button>
+                        <button type="button" class="interestsbtn" data-value="fashion">fashion</button>
+                        <button type="button" class="interestsbtn" data-value="food & drink">food & drink</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="gardening">gardening</button>
+                        <button type="button" class="interestsbtn" data-value="golf">golf</button>
+                        <button type="button" class="interestsbtn" data-value="gaming">gaming</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="hiking">hiking</button>
+                        <button type="button" class="interestsbtn" data-value="history">history</button>
+                        <button type="button" class="interestsbtn" data-value="horse riding">horse riding</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="health & wellness">health & wellness</button>
+                        <button type="button" class="interestsbtn" data-value="illustrations">illustrations</button>
+                        <button type="button" class="interestsbtn" data-value="interior design">interior design</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="investing">investing</button>
+                        <button type="button" class="interestsbtn" data-value="journalling">journalling</button>
+                        <button type="button" class="interestsbtn" data-value="jigsaw puzzles">jigsaw puzzles</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="jogging">jogging</button>
+                        <button type="button" class="interestsbtn" data-value="knitting">knitting</button>
+                        <button type="button" class="interestsbtn" data-value="kayaking">kayaking</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="literature">literature</button>
+                        <button type="button" class="interestsbtn" data-value="live music">live music</button>
+                        <button type="button" class="interestsbtn" data-value="languages">languages</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="mindfulness">mindfulness</button>
+                        <button type="button" class="interestsbtn" data-value="meditation">meditation</button>
+                        <button type="button" class="interestsbtn" data-value="mountain biking">mountain biking</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="motorbikes">motorbikes</button>
+                        <button type="button" class="interestsbtn" data-value="music">music</button>
+                        <button type="button" class="interestsbtn" data-value="mountain biking">mountain biking</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="nature">nature</button>
+                        <button type="button" class="interestsbtn" data-value="nutrition">nutrition</button>
+                        <button type="button" class="interestsbtn" data-value="networking">networking</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="origami">origami</button>
+                        <button type="button" class="interestsbtn" data-value="outdoor adventures">outdoor adventures</button>
+                        <button type="button" class="interestsbtn" data-value="opera">opera</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="photography">photography</button>
+                        <button type="button" class="interestsbtn" data-value="poetry">poetry</button>
+                        <button type="button" class="interestsbtn" data-value="painting">painting</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="pets">pets</button>
+                        <button type="button" class="interestsbtn" data-value="parenting">parenting</button>
+                        <button type="button" class="interestsbtn" data-value="pilates">pilates</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="quizzes">quizzes</button>
+                        <button type="button" class="interestsbtn" data-value="reading">reading</button>
+                        <button type="button" class="interestsbtn" data-value="running">running</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="rowing">rowing</button>
+                        <button type="button" class="interestsbtn" data-value="rugby">rugby</button>
+                        <button type="button" class="interestsbtn" data-value="singing">singing</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="socialising">socialising</button>
+                        <button type="button" class="interestsbtn" data-value="sustainability">sustainability</button>
+                        <button type="button" class="interestsbtn" data-value="science">science</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="sports">sports</button>
+                        <button type="button" class="interestsbtn" data-value="travelling">travelling</button>
+                        <button type="button" class="interestsbtn" data-value="tennis">tennis</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="table tennis">table tennis</button>
+                        <button type="button" class="interestsbtn" data-value="theatre">theatre</button>
+                        <button type="button" class="interestsbtn" data-value="tennis">tennis</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="urban gardening">urban gardening</button>
+                        <button type="button" class="interestsbtn" data-value="volunteering">volunteering</button>
+                        <button type="button" class="interestsbtn" data-value="video games">video games</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="vintage clothes">vintage clothes</button>
+                        <button type="button" class="interestsbtn" data-value="walking">walking</button>
+                        <button type="button" class="interestsbtn" data-value="woodwork">woodwork</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="writing">writing</button>
+                        <button type="button" class="interestsbtn" data-value="wine">wine</button>
+                        <button type="button" class="interestsbtn" data-value="woodwork">yoga</button>
+                    </div>
+
+                    <div class="interests-row">
+                        <button type="button" class="interestsbtn" data-value="yachting">yachting</button>
+                        <button type="button" class="interestsbtn" data-value="zoos">zoos</button>
+                    </div>
+
+                    <!-- Hidden input to store selected value -->
+                    <input type="hidden" name="stage" id="selectedInterests">
+
+                    <!-- Next button -->
+                    <button type="submit" class="nextbtn">Next</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyBGC6doZP1qWpUEZdCNpyR8ftq9EgOldns",
+          authDomain: "cancer-circle.firebaseapp.com",
+          projectId: "cancer-circle",
+          storageBucket: "cancer-circle.firebasestorage.app",
+          messagingSenderId: "639024686722",
+          appId: "1:639024686722:web:e5c43e4adb511428e4769b",
+          measurementId: "G-WX4SYWLDNN"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script> 
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const interestsButtons = document.querySelectorAll(".interestsbtn");
+            const selectedInterestsInput = document.getElementById("selectedInterests");
+            const form = document.getElementById("questionForm");
+            let selectedCount = 0; // Track the number of selected buttons
+
+            interestsButtons.forEach(button => {
+                button.addEventListener("click", function() {
+                    // Toggle selection of the clicked button
+                    if (this.classList.contains("selected")) {
+                        // Deselect button if already selected
+                        this.classList.remove("selected");
+                        selectedCount--;
+                    } else {
+                        // Select button if not already selected
+                        if (selectedCount < 5) {
+                            this.classList.add("selected");
+                            selectedCount++;
+                        } else {
+                            alert("You can select up to 5 interests.");
+                            return;
+                        }
+                    }
+
+                    // Update the hidden input with the selected values
+                    const selectedValues = [...document.querySelectorAll(".interestsbtn.selected")].map(btn => btn.getAttribute("data-value"));
+                    selectedInterestsInput.value = selectedValues.join(",");
+                });
+            });
+
+            form.addEventListener("submit", function(event) {
+                if (selectedCount === 0) {
+                    event.preventDefault(); // Prevent form submission if no values are selected
+                    alert("Please select at least one interest before proceeding.");
+                }
+            });
+        });
+
+        function filterInterests() {
+    let input = document.getElementById("searchInterests").value.toLowerCase();
+    let buttons = document.querySelectorAll(".interestsbtn");
+
+    buttons.forEach(button => {
+        let text = button.innerText.toLowerCase();
+        if (text.includes(input)) {
+            button.style.display = "inline-block"; // Show matching items
+        } else {
+            button.style.display = "none"; // Hide non-matching items
+        }
+    });
+}
+    </script>
+
+</body>
+</html>

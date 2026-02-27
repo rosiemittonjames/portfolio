@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Profile</title>
+    <link href="createprofile.css" rel="stylesheet" type="text/css">
+    
+</head>
+<body>
+    <main>
+        <section class="grid-container-flex">
+
+            <form action="profile.php" method="GET" onsubmit="return validateForm(event)"></form>
+
+            <h1>add your profile picture</h1>
+
+            <div class="photo-upload">
+                <input type="file" class="photos-input" name="photos[]" accept="image/*" multiple hidden>
+                <div class="photo-box">
+                    <span class="plus-icon">+</span>
+                    <img class="photo-display" src="" alt="Profile Photos" style="display:none;">
+                </div>
+            </div>
+
+
+<div class="profile-container">
+
+        <!-- Profile Details -->
+        <div class="profile-details">
+            <h1>NAME, AGE</h1> 
+            <h2>LOCATION</h2>
+        </div>
+
+        <div class="profile-tags">
+            <div class="tags">
+                <span>cancer survivor</span> 
+            </div>
+            <div class="tags">
+                <span>prostate</span> <span>stage 2</span> <span>surgery</span>
+            </div>
+    
+            <div class="tags">
+                <span>walking</span> <span>running</span> <span>animals</span> <span>gym</span>
+            </div>
+        </div>
+    </div>
+</div> 
+
+<form class="my-form">
+    <h1>add your bio</h1>
+  <textarea id="msg" name="msg" rows="7" cols="150"></textarea>
+</formclass>
+   
+<h1>add your top photos</h1>
+
+<div class="photos">
+    <div class="photo-upload">
+        <input type="file" class="photos-input" name="photos[]" accept="image/*" multiple hidden>
+        <div class="photo-box">
+            <span class="plus-icon">+</span>
+            <img class="photo-display" src="" alt="Profile Photos" style="display:none;">
+        </div>
+    </div>
+
+    <div class="photo-upload">
+        <input type="file" class="photos-input" name="photos[]" accept="image/*" multiple hidden>
+        <div class="photo-box">
+            <span class="plus-icon">+</span>
+            <img class="photo-display" src="" alt="Profile Photos" style="display:none;">
+        </div>
+    </div>
+</div>
+
+<div class="photos">
+    <div class="photo-upload">
+        <input type="file" class="photos-input" name="photos[]" accept="image/*" multiple hidden>
+        <div class="photo-box">
+            <span class="plus-icon">+</span>
+            <img class="photo-display" src="" alt="Profile Photos" style="display:none;">
+        </div>
+    </div>
+
+    <div class="photo-upload">
+        <input type="file" class="photos-input" name="photos[]" accept="image/*" multiple hidden>
+        <div class="photo-box">
+            <span class="plus-icon">+</span>
+            <img class="photo-display" src="" alt="Profile Photos" style="display:none;">
+        </div>
+    </div>
+</div>
+
+<div class="photos">
+    <div class="photo-upload">
+        <input type="file" class="photos-input" name="photos[]" accept="image/*" multiple hidden>
+        <div class="photo-box">
+            <span class="plus-icon">+</span>
+            <img class="photo-display" src="" alt="Profile Photos" style="display:none;">
+        </div>
+    </div>
+
+    <div class="photo-upload">
+        <input type="file" class="photos-input" name="photos[]" accept="image/*" multiple hidden>
+        <div class="photo-box">
+            <span class="plus-icon">+</span>
+            <img class="photo-display" src="" alt="Profile Photos" style="display:none;">
+        </div>
+    </div>
+</div>
+
+    <button type="submit" class="nextbtn"></a>next</button>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const photoUploads = document.querySelectorAll('.photo-upload');
+
+    photoUploads.forEach(upload => {
+        const photosInput = upload.querySelector('.photos-input');
+        const photoDisplay = upload.querySelector('.photo-display');
+        const photoBox = upload.querySelector('.photo-box');
+        const plusIcon = upload.querySelector('.plus-icon');
+
+        photoBox.addEventListener('click', function() {
+            photosInput.click();
+        });
+
+        photosInput.addEventListener('change', function(event) {
+            const files = event.target.files;
+
+            if (files.length > 0) {
+                const imageUrl = URL.createObjectURL(files[0]);
+                photoDisplay.src = imageUrl;
+                photoDisplay.style.display = 'block';
+                plusIcon.style.display = 'none';
+            }
+        });
+    });
+});
+
+
+    </script>
+
+</body>
+</html>

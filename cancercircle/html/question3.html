@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location</title>
+    <link href="question3.css" rel="stylesheet" type="text/css">
+    
+</head>
+<body>
+    <main>
+        <section class="grid-container-flex">
+
+
+                <div class="rectangle"></div> 
+
+                <div class="top-right"><h2><a href="question4.php">Skip</a></h2>
+                </div>
+
+                <form action="question4.php" method="POST" onsubmit="return validateForm(event)" id="questionForm">
+                    <div class="container">
+                      <h1>Location</h1>
+                  
+                      <label for="location"><b>Where do you live?</b></label>
+                      <input type="text" placeholder="Location" name="location" id="location">
+
+                      <label for="ethnicity"><b>What's your ethnicity?</b></label>
+                      <select id="ethnicity" name="ethnicity">
+                        <option value="">Select an ethnicity</option>
+                        <option value="white">White</option>
+                        <option value="black_or_african_american">Black or African American</option>
+                        <option value="asian">Asian</option>
+                        <option value="hispanic_or_latino">Hispanic or Latino</option>
+                        <option value="other">Other</option>
+                      </select>
+
+                      <label for="ethnicity"><b>What's your first language?</b></label>
+                      <input type="text" placeholder="First language" name="language" id="language">
+                  
+    
+                      <button type="submit" class="nextbtn"></a>Next</button>
+                    </div>
+                  
+                  </form>
+
+            
+    </main>
+</body>
+</html>

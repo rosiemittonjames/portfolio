@@ -1,0 +1,242 @@
+/* Media query for tablets */
+@media (min-width: 768px) {
+  .grid-container-flex {
+    font-size: 1.5rem;
+  }
+
+}
+
+/* Media query for desktops */
+@media (min-width: 1024px) {
+  .grid-container-flex {
+    font-size: 2rem;
+  }
+}
+
+.rectangle {
+  height: 10px;
+  width: 100px;
+  background: linear-gradient(to right, #FF97B0 50%, #D9D9D9 50%);
+  border-radius: 25px; 
+  margin-top: 20px;
+}
+
+ /* Tablet view (min-width: 768px) */
+ @media (min-width: 768px) {
+  .rectangle {
+      width: 100%; 
+      max-width: 500px;
+  }
+}
+
+/* Desktop view (min-width: 1024px) */
+@media (min-width: 1024px) {
+  .rectangle {
+      width: 100%; 
+      max-width: 1000px;
+  }
+}
+
+
+h1 { 
+    color: #262626; 
+    font-family:'Libre Franklin', sans-serif; 
+    font-size: 2.4em;
+    margin-top: 120px;
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+
+h2 {
+  color: #262626;
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: 1.2em;
+      cursor: pointer;
+
+  }
+
+  h2 a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  h2 a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .question-header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+  }
+  
+  .arrow {
+    font-size: 1.8em;
+    color: #262626;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .question-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .question-options a .arrow {
+    font-size: 1.3em;
+  }
+
+p { 
+  color: #262626; 
+  font-family:'Libre Franklin', sans-serif; 
+  font-size: 1em;
+  margin-bottom: 20px;
+  margin-left: 20px;
+
+}
+
+b {
+  font-family:'Libre Franklin', sans-serif; 
+  font-size: 1.2em;
+
+}
+
+        body {
+          background-color: #f5f5f5;
+            margin-left: 5px;
+            margin-right: 5px;
+            display: flex;
+            justify-content: center; 
+            align-items: center; 
+            background-size: cover;
+            background-position: center; 
+            text-align: center; 
+
+        }
+        .grid-container-flex {
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            padding: 20px;
+            color: #262626; 
+        }
+
+        /* Media query for tablets */
+        @media (min-width: 768px) {
+            .grid-container-flex {
+                font-size: 1.5rem; 
+            }
+            .my-button {
+                font-size: 1.5rem; 
+            }
+        }
+
+        /* Media query for desktops */
+        @media (min-width: 1024px) {
+            .grid-container-flex {
+                font-size: 2rem; 
+            }
+            .my-button {
+                font-size: 2rem; 
+            }
+        }
+
+* {box-sizing: border-box}
+
+
+.container {
+padding: 10px 20px;
+}
+
+
+input[type=text], input[type=password], 
+select {
+width: 100%;
+padding: 15px;
+margin: 10px 0 20px 0;
+border-radius: 12px;
+display: inline-block;
+background: white;
+border: 1.5px solid black;
+font-size: 0.8em;
+font-family:'Libre Franklin', sans-serif; 
+}
+
+input[type=text]:focus, input[type=password]:focus, 
+select:focus {
+background-color: #f1f1f1;
+outline: none;
+}
+
+
+
+.nextbtn {
+  background-color: #FF7900;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+  font-family:'Libre Franklin', sans-serif; 
+    font-size: 1.2em;
+    border: 1.5px solid black;
+    margin-top: 25px;
+  }
+  
+  .nextbtn:hover {
+  opacity:1;
+    background-color: #262626;
+    color: white;
+  }
+  
+
+  a {
+  color: #262626;
+  }
+  
+
+  .signin {
+  background-color: #ffffff;
+  text-align: center;
+  }
+
+ 
+.connectionbtn {
+  background-color: white;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  width: auto;
+  opacity: 0.9;
+  font-family:'Libre Franklin', sans-serif; 
+    font-size: 1.2em;
+    border: 1.5px solid black;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  .connectionbtn:hover {
+  opacity:1;
+    background-color: #FFB570;
+    color: black;
+  }
+
+  .connectionbtn.selected {
+      background-color: #FFB570;
+      color: black;
+  }
+
+  .connection-row {
+      display: flex;
+      justify-content: center; 
+  }

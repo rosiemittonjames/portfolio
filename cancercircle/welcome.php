@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link href="welcomestyle.css" rel="stylesheet" type="text/css">
+    
+</head>
+<body>
+    <main>
+        <section class="grid-container-grid">
+        <img src="Logo.png" alt="Cancer Circle Logo">
+    </section>
+
+        <section class="grid-container-flex">
+            <h1>Join Our Meaningful Community</h1>
+            <h2>Cancer Connections Made Easy</h2>
+            <button class="my-button" onclick="goToPage()">Get Started</button>
+        </section>
+    </main>
+
+    <script>
+
+        function goToPage() {
+            window.location.href = 'narration.php'; 
+        }
+
+    </script>
+</body>
+</html>

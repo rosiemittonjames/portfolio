@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link href="signin.css" rel="stylesheet" type="text/css">
+    
+</head>
+<body>
+    <main>
+        <section class="grid-container-flex">
+
+            <form action="question1.html" method="GET" onsubmit="return validateForm(event)">
+                <div class="container">
+                  <h1>sign in</h1>
+              
+                  <label for="email"><b>email</b></label>
+                  <input type="text" placeholder="enter your email" name="email" id="email" required>
+              
+                  <label for="psw"><b>password</b></label>
+                  <input type="password" placeholder="enter your password" name="psw" id="psw" required>
+              
+
+                  <button type="submit" class="registerbtn">sign in</button>
+                </div>
+              
+               
+                  <p>forgot your password? <a href="forgotpassword.html">change password</a>.</p>
+              </form>
+
+              <script>
+
+              function validateForm(event) {
+                const emailInput = document.getElementById("email");
+                const passwordInput = document.getElementById("psw");
+                const confirmPasswordInput = document.getElementById("psw-repeat");
+
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                // Check if email is valid
+                if (!emailPattern.test(emailInput.value)) {
+                    alert("Please enter a valid email address.");
+                    event.preventDefault();
+                    return false;
+                }}
+            </script>
+            
+    </main>
+</body>
+</html>

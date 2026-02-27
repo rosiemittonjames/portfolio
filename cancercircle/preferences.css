@@ -1,0 +1,386 @@
+/* Media query for tablets */
+@media (min-width: 768px) {
+    .grid-container-flex {
+      font-size: 1.2rem;
+    }
+  }
+  
+  /* Media query for desktops */
+  @media (min-width: 1024px) {
+    .grid-container-flex {
+      font-size: 1.7rem;
+    }
+  }
+  
+  
+  h1 {
+    color: #262626;
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 1.3em;
+    margin-left: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  
+  h2 {
+    color: #262626;
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 1.2em;
+    margin-left: 5px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+  }
+  
+  p { 
+    color: #262626; 
+    font-family:'Libre Franklin', sans-serif; 
+    font-size: 0.8em;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    box-sizing: border-box;
+  
+  }
+  
+  .tags {
+    margin-left: 10px;
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px; 
+  }
+  
+  .tags span {
+    background: linear-gradient(20deg, #FF7900, #FFB570, #FF97B0);
+    color: black;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 1em;
+    white-space: nowrap; 
+    font-family: 'Libre Franklin', sans-serif;
+  }
+  
+  .profile-tags {
+  flex: 1; 
+      min-width: 300px;
+      margin-top: 5px;
+  }
+  
+  body {
+    background-image: #f1f1f1;
+      margin-left: 5px;
+      margin-right: 5px;
+      display: flex;
+      justify-content: center; 
+      align-items: center; 
+      background-size: cover; 
+      background-position: center; 
+      text-align: center; 
+  
+  }
+  
+  .grid-container-flex {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    color: #262626;
+    padding-bottom: 30px;
+    box-sizing: border-box;
+  }
+  
+  * {box-sizing: border-box}
+  
+  .profile-container {
+    display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between; 
+      align-items: flex-start; 
+      gap: 20px; 
+      max-width: 1000px; 
+      margin: 0 auto; 
+  }
+  
+  @media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column; 
+    }
+  }
+  
+
+.container {
+  padding: 10px 20px;
+  }
+  
+
+  input[type=text], input[type=number], input[type=email], input[type=tel] {
+  width: 70%;
+  padding: 15px;
+  margin: 10px 0 5px 0;
+  border-radius: 12px;
+  display: inline-block;
+  background: white;
+  border: 1.5px solid black;
+  font-size: 1.2em;
+  font-family:'Libre Franklin', sans-serif; 
+  box-sizing: border-box;
+  }
+  
+  input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=tel]:focus {
+  background-color: #f1f1f1;
+  outline: none;
+  }
+  
+
+  .nextbtn {
+  background-color: #FF7900;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  width: 70%;
+  opacity: 0.9;
+  font-family:'Libre Franklin', sans-serif; 
+    font-size: 1.2em;
+    border: 1.5px solid black;
+    margin-top:20px;
+    margin-bottom: 30px;
+  }
+  
+  .nextbtn:hover {
+  opacity:1;
+    background-color: #262626;
+    color: white;
+  }
+  
+
+  a {
+  color: #262626;
+  }
+  
+
+  .signin {
+  background-color: #ffffff;
+  text-align: center;
+  }
+  
+  
+  ul.navigation {
+    position: fixed;         
+    bottom: 0;              
+    left: 0;
+    right: 0;
+    background-color: #262626;
+    width: 100%;
+    padding: 10px 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 0.9em;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    z-index: 1000;        
+  }
+    
+    li {
+      float: center;
+    }
+    
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    
+ 
+    li a:hover {
+      color: #FFB570;
+    }
+  
+    .active {
+      color: #FFB570;
+    }
+  
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: 1.5em;
+  }
+  
+  .header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px; 
+    margin-bottom: 10px;
+  }
+  
+  .header-bar h1 {
+    margin: 0; 
+    font-size: 1.5em;
+    font-family: 'Libre Franklin', sans-serif;
+    color: #262626;
+  }
+  
+  .settings-link i {
+    font-size: 30px;
+    color: #262626;
+    transition: color 0.3s ease;
+  }
+  
+  .settings-link i:hover {
+    color: #FF7900;
+  }
+
+  .genderbtn {
+    background-color: white;
+    color: black;
+    padding: 10px 40px;
+    border-radius: 12px;
+    cursor: pointer;
+    width: auto;
+    opacity: 0.9;
+    font-family:'Libre Franklin', sans-serif; 
+      font-size: 1.2em;
+      border: 1.5px solid black;
+      margin-top: 20px;
+      margin-left: 10px;
+      margin-right: 10px;
+      box-sizing: border-box;
+      flex-wrap: wrap;
+    }
+    
+    .genderbtn:hover {
+    opacity:1;
+      background-color: #FFB570;
+      color: black;
+    }
+
+    .genderbtn.selected {
+        background-color: #FFB570;
+        color: black;
+    }
+
+    .gender-row {
+        display: flex;
+        justify-content: center; 
+        gap: 10px; 
+    }
+
+    .connectionbtn {
+      background-color: white;
+      color: black;
+      padding: 10px 40px;
+      border-radius: 12px;
+      cursor: pointer;
+      width: auto;
+      opacity: 0.9;
+      font-family:'Libre Franklin', sans-serif; 
+        font-size: 1.2em;
+        border: 1.5px solid black;
+        margin-top: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+        box-sizing: border-box;
+        flex-wrap: wrap;
+      }
+      
+      .connectionbtn:hover {
+      opacity:1;
+        background-color: #FFB570;
+        color: black;
+      }
+  
+      .connectionbtn.selected {
+          background-color: #FFB570;
+          color: black;
+      }
+  
+      .connection-row {
+          display: flex;
+          justify-content: center; 
+          gap: 10px; 
+      }
+
+      .label-row {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 300px; 
+        margin: 0 auto 5px auto; 
+    }
+    
+    .left-label {
+        text-align: left;
+    }
+    
+    .right-label {
+        text-align: right;
+    }
+
+    .interestsbtn {
+      background-color: white;
+      color: black;
+      padding: 10px 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      width: auto;
+      opacity: 0.9;
+      font-family:'Libre Franklin', sans-serif; 
+        font-size: 1.2em;
+        border: 1.5px solid black;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        margin-left: 15px;
+        margin-right: 15px;
+        box-sizing: border-box;
+        flex-wrap: wrap;
+      }
+      
+      .interestsbtn:hover {
+      opacity:1;
+        background-color: #FFB570;
+        color: black;
+      }
+    
+      .interestsbtn.selected {
+          background-color: #FFB570;
+          color: black;
+      }
+    
+      .interests-row {
+          display: flex;
+          justify-content: center; 
+      }
+
+      main {
+        padding-bottom: 30px; 
+      }
+
+      input[type="text"],
+      select {
+        width: 70%;
+        padding: 15px;
+        margin: 10px 0 20px 0;
+        border-radius: 12px;
+        display: inline-block;
+        background: white;
+        border: 1.5px solid black;
+        font-size: 1.2em;
+        font-family: 'Libre Franklin', sans-serif;
+        color: #262626;
+      }
+      
+      input[type="text"]:focus,
+      select:focus {
+        background-color: #f1f1f1;
+        outline: none;
+        color: #262626;
+      }
+  

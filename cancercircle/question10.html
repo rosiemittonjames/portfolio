@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connection to Cancer</title>
+  <link href="question10.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <main>
+    <section class="grid-container-flex">
+      <div class="rectangle"></div> 
+
+      <div class="question-header">
+        <a href="question9.php">
+            <i class="fa-solid fa-arrow-circle-left arrow"></i>
+        </a>
+        <h2><a href="welcomescreen.php">Skip</a></h2>
+    </div>
+
+      <div class="container">
+        <h1>Do you want to eventually meet others or just stay online?</h1>
+
+        <form method="POST" id="questionForm">
+          <div class="connection-row">
+            <button type="button" class="connectionbtn" data-value="Meet Others In-person">Meet Others In-person</button>
+          </div>
+          <div class="connection-row">
+            <button type="button" class="connectionbtn" data-value="Only Connect Online">Only Connect Online</button>
+          </div>
+          <div class="connection-row">
+            <button type="button" class="connectionbtn" data-value="Connect Online & In-Person">Connect Online & In-Person</button>
+          </div>
+          <div class="connection-row">
+            <button type="button" class="connectionbtn" data-value="I'm Not Sure">I'm Not Sure</button>
+          </div>
+
+          <!-- Hidden input -->
+          <input type="hidden" name="connection" id="selectedConnection">
+
+          <!-- Submit -->
+          <button type="button" class="nextbtn">Next</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script>
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const buttons = document.querySelectorAll(".connectionbtn");
+    const form = document.getElementById("questionForm");
+    const selectedConnection = document.getElementById("selectedConnection");
+    const nextButton = document.querySelector(".nextbtn");
+    let nextUrl = "";
+  
+    buttons.forEach(button => {
+      button.addEventListener("click", function () {
+        const isSelected = this.classList.contains("selected");
+  
+        // Remove selection from all buttons
+        buttons.forEach(btn => btn.classList.remove("selected"));
+  
+        if (!isSelected) {
+          // Select the clicked button
+          this.classList.add("selected");
+          selectedConnection.value = this.getAttribute("data-value");
+          nextUrl = this.getAttribute("data-url") || ""; // Optional in case you add dynamic URLs
+        } else {
+          // Deselect if it was already selected
+          selectedConnection.value = "";
+          nextUrl = "";
+        }
+      });
+    });
+
+    nextButton.addEventListener("click", function () {
+  if (selectedConnection.value) {
+    form.action = "welcomescreen.php";
+    form.submit();
+  } else {
+    alert("Please select an option before proceeding.");
+  }
+});
+  
+  });
+  </script>
+</body>
+</html>

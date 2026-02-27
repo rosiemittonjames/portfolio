@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Details</title>
+    <link href="question9.css" rel="stylesheet" type="text/css">
+    
+</head>
+<body>
+    <main>
+        <section class="grid-container-flex">
+
+
+                
+                <div class="rectangle"></div> 
+
+                <form action="welcomescreen.php" method="GET" onsubmit="return validateForm(event)">
+                    <div class="container">
+                      <h1>enter your prefered contact details</h1>
+
+                      <p>this is so other users can get in contact with you</p>
+                  
+                      <label for="name"><b>email</b></label>
+                      <input type="email" placeholder="enter your email if prefered" name="email" id="email">
+
+                      <label for="phone-number"><b>phone number</b></label>
+                      <input type="phone-number" placeholder="enter your number if prefered" name="number" id="number" required>
+                  
+    
+                      <button type="submit" class="nextbtn"></a>next</button>
+                    </div>
+                  
+                  </form>
+                  
+            
+    </main>
+
+    <script>
+      function validateForm(event) {
+          const emailInput = document.getElementById("email");
+          const passwordInput = document.getElementById("psw");
+          const confirmPasswordInput = document.getElementById("psw-repeat");
+
+          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+          // Check if email is valid
+          if (!emailPattern.test(emailInput.value)) {
+              alert("Please enter a valid email address.");
+              event.preventDefault();
+              return false;
+          }
+        }
+
+        </script>
+</body>
+</html>

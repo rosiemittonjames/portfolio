@@ -1,0 +1,411 @@
+Create profile 
+
+<?php
+$db_hostname = 'localhost';
+$db_database = 'bn21rcmj_createaccount'; //'Your database name'
+$db_username = 'bn21rcmj_user'; //'your username';
+$db_password = '?[9Wm,)Y_AKB'; //'Your password';
+$db_connection_string = "mysql:host=$db_hostname;dbname=$db_database";
+$db_status = 'not initialised';
+$content = '';
+
+try {
+//create a connection object
+$conn = new PDO($db_connection_string, $db_username, $db_password);
+// set the PDO error mode to exception
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$db_status = "Connected successfully";
+} 
+
+catch(PDOException $e) {
+$db_status = "Connection failed: " . $e->getMessage();
+}
+
+$sql = "INSERT INTO createaccount(Email, Password) VALUES ('[value-1]','[value-2]')";
+
+// Close connection to database
+$conn = null;
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Profile</title>
+    <link href="createprofile.css" rel="stylesheet" type="text/css">
+    
+</head>
+<body>
+    <main>
+        <section class="grid-container-flex">
+
+        <div class="photo-upload">
+        <input type="file" id="photos" name="photos[]" accept="image/*" multiple hidden>
+        <div class="photo-box" id="photoBox">
+            <span class="plus-icon">+</span>
+            <img id="photoDisplay" src="" alt="Profile Photos" style="display:none;">
+        </div>
+    </div>
+
+    <div class="photo-display">
+        <button type="button" id="prev" class="nav-button">◀</button>
+        <button type="button" id="next" class="nav-button">▶</button>
+    </div>
+
+    <form id="uploadForm" action="upload.php" method="POST" enctype="multipart/form-data">
+        <input type="file" name="photos[]" id="fileInput" accept="image/*" multiple hidden>
+        <button type="submit" class="nextbtn">Upload</button>
+    </form>
+
+        <ul>
+            <li><a href="#home">home</a></li>
+            <li><a href="#news">discover</a></li>
+            <li><a href="#contact">messages</a></li>
+            <li><a href="#contact">profile</a></li>
+        </ul>
+
+    </main>
+
+    </body>
+</html>
+
+    <script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+    const photosInput = document.getElementById('fileInput');
+    const photoDisplay = document.getElementById('photoDisplay');
+    const photoBox = document.getElementById('photoBox');
+    const plusIcon = document.querySelector('.plus-icon');
+    const prevButton = document.getElementById('prev');
+    const nextButton = document.getElementById('next');
+
+    let currentPhotoIndex = 0;
+    let photoFiles = [];
+
+    // Open file picker when clicking the box
+    photoBox.addEventListener('click', function() {
+        photosInput.click();
+    });
+
+    // Handle image selection
+    photosInput.addEventListener('change', function(event) {
+        photoFiles = Array.from(event.target.files).slice(1); // Limit to 1 photos
+        currentPhotoIndex = 0;
+
+        if (photoFiles.length > 0) {
+            updatePhotoDisplay();
+        }
+    });
+
+    function updatePhotoDisplay() {
+        if (photoFiles.length > 0) {
+            photoDisplay.src = URL.createObjectURL(photoFiles[currentPhotoIndex]);
+            photoDisplay.style.display = 'block';
+            plusIcon.style.display = 'none'; // Hide plus icon when an image is uploaded
+        } else {
+            photoDisplay.style.display = 'none';
+            plusIcon.style.display = 'block'; // Show plus icon if no images
+        }
+    }
+
+    // Next photo button
+    nextButton.addEventListener('click', function() {
+        if (photoFiles.length > 0) {
+            currentPhotoIndex = (currentPhotoIndex + 1) % photoFiles.length;
+            updatePhotoDisplay();
+        }
+    });
+
+    // Previous photo button
+    prevButton.addEventListener('click', function() {
+        if (photoFiles.length > 0) {
+            currentPhotoIndex = (currentPhotoIndex - 1 + photoFiles.length) % photoFiles.length;
+            updatePhotoDisplay();
+        }
+    });
+});
+
+</script>
+
+
+</body>
+</html>
+
+
+/* Media query for tablets */
+@media (min-width: 768px) {
+    .grid-container-flex {
+      font-size: 1.3rem;
+    }
+  
+  }
+  
+  /* Media query for desktops */
+  @media (min-width: 1024px) {
+    .grid-container-flex {
+      font-size: 2rem;
+    }
+  }
+  
+
+  h1 { 
+      color: #262626; 
+      font-family:'Libre Franklin', sans-serif; 
+      font-size: 3em;
+      margin-top: 295px;
+      margin-left: 20px;
+      margin-bottom: 2px;
+      text-align: center;
+  }
+  
+  
+  h2 { 
+      color: #262626; 
+      font-family:'Libre Franklin', sans-serif; 
+      font-size: 1em;
+      margin-left: 20px;
+  }
+
+  p { 
+    color: #262626; 
+    font-family:'Libre Franklin', sans-serif; 
+    font-size: 0.8em;
+    margin-bottom: 20px;
+    margin-left: 20px;
+  
+}
+
+body {
+    background-image: #f1f1f1 ;
+      margin: 0; /* Remove default margin */
+      display: flex;
+      justify-content: center; /* Center horizontally */
+      align-items: center; /* Center vertically */
+      background-size: cover; /* Cover entire background */
+      background-position: center; /* Center the background image */
+      text-align: center; /* Center text inside the section */
+
+  }
+  .grid-container-flex {
+      display: flex;
+      flex-direction: column; /* Stack items vertically */
+      align-items: center; /* Center items horizontally */
+      padding: 20px;
+      color: #262626; /* Change text color for contrast */
+  }
+
+  /* Media query for tablets */
+  @media (min-width: 768px) {
+      .grid-container-flex {
+          font-size: 1.3rem; /* Increase font size for tablets */
+      }
+      .my-button {
+          font-size: 1.5rem; /* Larger button text */
+      }
+  }
+
+  /* Media query for desktops */
+  @media (min-width: 1024px) {
+      .grid-container-flex {
+          font-size: 2rem; /* Increase font size for desktops */
+      }
+      .my-button {
+          font-size: 1.8rem; /* Larger button text */
+      }
+  }
+
+* {box-sizing: border-box}
+
+/* Add padding to containers */
+.container {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 12px;
+    overflow: hidden;
+    background-color: #262626;
+    position: fixed;
+    width: 74%;
+    max-width: 1200px;
+    bottom: 10px;
+    font-family:'Libre Franklin', sans-serif; 
+    font-size: 1em;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 50px;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+  li a:hover {
+    color: #FFB570;
+  }
+
+  .active {
+    color: #FFB570;
+  }
+
+  label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input[type="text"], 
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+  /* Set a style for the submit/register button */
+.nextbtn {
+    background-color: #FF7900;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    font-family:'Libre Franklin', sans-serif; 
+      font-size: 1.2em;
+      border: 1.5px solid black;
+      margin-top: 30px;
+    }
+    
+    .nextbtn:hover {
+    opacity:1;
+      background-color: #262626;
+      color: white;
+    }
+
+    .photo-upload {
+      position: relative;
+      margin: 10px 0; 
+      border-radius: 20px;
+      width: 300px;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+  } 
+
+  @media (min-width: 768px) {
+    .photo-upload {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .photo-upload {
+        width: 300px;
+        height: 300px;
+    }
+}
+  
+  .photo-box {
+      width: 300px;
+      height: 300px;
+      background-color:#ccc ;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+  }
+
+  @media (min-width: 768px) {
+    .photo-box {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .photo-box {
+        width: 300px;
+        height: 300px;
+    }
+}
+  
+  .plus-icon {
+      font-size: 3rem;
+      color: black;
+      position: absolute;
+      cursor: pointer;
+
+  }
+  
+  .photo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+  }
+  
+  .photo-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 10px 0;
+  }
+
+  <div class="box">
+    <img src="electricshuffle.png" alt="Photo of Electric Shuffle">
+</div>
+
+<div class="location-row">
+    <p>Electric Shuffle</p> 
+    <p><a href="https://electricshuffle.com/uk/leeds">learn more</a></p>
+    </div>
+<div class="location-row">
+    <p>Leeds City Centre</p>
+</div>
+
+.box {
+    width: 90%; /* Adjust width dynamically */
+    max-width: 1000px; /* Limit max width */
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .box img {
+    width: 100%; /* Makes the image fill its container */
+    max-width: 800px; /* Limits the max size */
+    height: auto; /* Maintains aspect ratio */
+    border-radius: 20px;
+    display: block; /* Removes extra space below the image */
+  }
+  
+  @media (min-width: 1024px) {
+    .box img {
+      max-width: 900px; /* Increase max size for bigger screens */
+    }
+  }

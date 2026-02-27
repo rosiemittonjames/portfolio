@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology</title>
+    <link href="question6.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <main>
+        <section class="grid-container-flex">
+            <div class="rectangle"></div> 
+
+            <div class="top-right"><h2><a href="question7.html">skip</a></h2>
+            </div>
+
+            <div class="container">
+                <h1>how comfortable are you with technology?</h1>
+
+                <div class="label-row">
+                    <span class="left-label"><b>not very</b></span>
+                    <span class="right-label"><b>very</b></span>
+                </div>
+
+                <form id="questionForm" action="question7.html" method="GET">
+                    <div class="connection-row">
+                        <button type="button" class="connectionbtn" data-value="1">1</button>
+                        <button type="button" class="connectionbtn" data-value="2">2</button>
+                        <button type="button" class="connectionbtn" data-value="3">3</button>
+                        <button type="button" class="connectionbtn" data-value="4">4</button>
+                        <button type="button" class="connectionbtn" data-value="5">5</button>
+                    </div>
+
+                    <!-- Hidden input to store selected value -->
+                    <input type="hidden" name="stage" id="selectedConnection">
+
+                    <!-- Next button -->
+                    <button type="submit" class="nextbtn">Next</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyBGC6doZP1qWpUEZdCNpyR8ftq9EgOldns",
+          authDomain: "cancer-circle.firebaseapp.com",
+          projectId: "cancer-circle",
+          storageBucket: "cancer-circle.firebasestorage.app",
+          messagingSenderId: "639024686722",
+          appId: "1:639024686722:web:e5c43e4adb511428e4769b",
+          measurementId: "G-WX4SYWLDNN"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script> 
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    const connectionButtons = document.querySelectorAll(".connectionbtn");
+    const selectedConnectionInput = document.getElementById("selectedConnection");
+    const form = document.getElementById("questionForm");
+
+    connectionButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            if (this.classList.contains("selected")) {
+                // Deselect if already selected
+                this.classList.remove("selected");
+                selectedConnectionInput.value = "";
+            } else {
+                // Remove selection from all buttons
+                connectionButtons.forEach(btn => btn.classList.remove("selected"));
+
+                // Select clicked button
+                this.classList.add("selected");
+                selectedConnectionInput.value = this.getAttribute("data-value");
+            }
+        });
+    });
+
+    form.addEventListener("submit", function(event) {
+        if (!selectedConnectionInput.value) {
+            event.preventDefault(); // Prevent form submission if no value is selected
+            alert("Please select an option before proceeding.");
+        }
+    });
+});
+    </script>
+
+</body>
+</html>
+
+

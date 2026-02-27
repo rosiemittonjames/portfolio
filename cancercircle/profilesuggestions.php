@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="profilesuggestions.css" rel="stylesheet" type="text/css">
+    
+</head>
+<body>
+    <main>
+        <section class="grid-container-flex">
+
+            <h1>Meet Others on a Similar Journey<h1>
+
+            <div class="extrainfo">
+                <h2>Below you can discover others in the community who share similar interests, experiences, or journeys.</h2>
+
+                <h2>This list is here to help you find others you might relate to, whether you're looking for 
+                    inspiration, connection, or just a sense of belonging. 
+                    You're not alone here, and these profiles are a great place to start exploring your community.
+                </h2>
+            </div>
+
+
+          <section class="similar-users-container">
+        
+                <div class="profile-wrapper">
+                    <div class="profile-card">
+                      <img src="barry.jpeg" alt="Barry">
+                      <div class="profile-info">
+                          <div class="user-details">
+                              <h3>Barry</h3>
+                              <p>Leeds City Centre</p>
+                              <p>62</p>
+                              <h4><a href="mailto:">Email</a></h4>
+                          </div>
+                          <div class="user-bio">
+                            <p>Hello, I'm Barry! I've had stage 2 prostate cancer and have had surgery. 
+                              I'd love to connect with others who are going through a similar experience.</p>
+                          </div>
+                          <div class="tags">
+                              <span>Cancer survivor</span> <span>Just finished treatment</span> <span>Prostate</span> <span>Stage 2</span> <span>Surgery</span>
+                        </div>
+                        <div class="tags">
+                          <span>Walking</span> <span>Outdoors</span> <span>Animals</span> <span>Birdwatching</span>
+                      </div>
+                      </div>
+                  </div>
+             
+            
+                  <div class="profile-wrapper" style="margin-top: 30px;">
+                    <div class="profile-card">
+                      <img src="aman.jpeg" alt="Aman">
+                      <div class="profile-info">
+                          <div class="user-details">
+                              <h3>Aman</h3>
+                              <p>Otley</p>
+                              <p>45</p>
+                              <h4><a href="mailto:">Email</a></h4>
+                              <h4><a href="tel:">Text</a></h4>
+                          </div>
+                          <div class="user-bio">
+                            <p>Hey my name is Aman! I'm hoping to meet others who understand the journey. 
+                              I am big on running, hitting the gym, and caring for animals.</p>
+                          </div>
+                          <div class="tags">
+                              <span>Cancer survivor</span> <span>Just finished treatment</span> <span>Prostate</span> <span>Stage 3</span> <span>Surgery</span>
+                        </div>
+                        <div class="tags">
+                          <span>Running</span> <span>Gym</span> <span>Animals</span> <span>Birdwatching</span>
+                      </div>
+                      </div>
+                  </div>
+
+                <div class="profile-wrapper">
+                    <div class="profile-card">
+                      <img src="mahmoudat.jpeg" alt="Mahmoudat">
+                      <div class="profile-info">
+                          <div class="user-details">
+                              <h3>Mahmoudat</h3>
+                              <p>Leeds City Centre</p>
+                              <p>54</p>
+                              <h4><a href="mailto:">Email</a></h4>
+                          </div>
+                          <div class="user-bio">
+                            <p>I'm Mahmoudat and I've had stage 3 breast cancer! I've joined this 
+                              community so I can connect with others similar to me as it can get lonely.</p>
+                          </div>
+                          <div class="tags">
+                              <span>Cancer survivor</span> <span>Just finished treatment</span> <span>Breast</span> <span>Stage 3</span> <span>Surgery</span>
+                              <span>Radiotherapy</span>
+                        </div>
+                        <div class="tags">
+                          <span>Running</span> <span>Hiking</span> <span>Outdoors</span> <span>Animals</span>
+                      </div>
+                      </div>
+                  </div>
+             
+            
+                  <div class="profile-wrapper" style="margin-top: 30px;">
+                    <div class="profile-card">
+                      <img src="lisa.jpeg" alt="Lisa">
+                      <div class="profile-info">
+                          <div class="user-details">
+                              <h3>Lisa</h3>
+                              <p>Headingley</p>
+                              <p>47</p>
+                              <h4><a href="tel:">Text</a></h4>
+                          </div>
+                          <div class="user-bio">
+                            <p>I'm here as I want to meet others who've just finished treatment.
+                              Feel free to send me a message!</p>
+                          </div>
+                          <div class="tags">
+                              <span>Cancer survivor</span> <span>Just finished treatment</span> <span>Skin</span> <span>Stage 2</span> <span>Surgery</span>
+                        </div>
+                        <div class="tags">
+                          <span>Running</span> <span>Hiking</span> <span>Outdoor adventures</span> <span>Birdwatching</span>
+                      </div>
+                      </div>
+                  </div>
+
+                  <div class="profile-wrapper">
+                    <div class="profile-card">
+                      <img src="caleb.jpeg" alt="Caleb">
+                      <div class="profile-info">
+                          <div class="user-details">
+                              <h3>Caleb</h3>
+                              <p>Leeds City Centre</p>
+                              <p>61</p>
+                              <h4><a href="mailto:">Email</a></h4>
+                              <h4><a href="tel:">Text</a></h4>
+                          </div>
+                          <div class="tags">
+                              <span>Cancer survivor</span> <span>Just finished treatment</span> <span>Prostate</span> <span>Stage 3</span> <span>Surgery</span>
+                        </div>
+                        <div class="tags">
+                          <span>Running</span> <span>Outdoor Adventures</span> <span>Pets</span> 
+                      </div>
+                      </div>
+                  </div>
+
+                  <div class="profile-wrapper">
+                    <div class="profile-card">
+                      <img src="dave.jpeg" alt="Dave">
+                      <div class="profile-info">
+                          <div class="user-details">
+                              <h3>Dave</h3>
+                              <p>Otley</p>
+                              <p>59</p>
+                              <h4><a href="mailto:">Email</a></h4>
+                              <h4><a href="tel:">Text</a></h4>
+                          </div>
+                          <div class="user-bio">
+                            <p>Hey, I'm Dave! I've just finished my treatment and I'm finding it a bit of a lonely 
+                              experience, so would be amazing to have a chat.
+                            </p>
+                          </div>
+                          <div class="tags">
+                              <span>Cancer survivor</span> <span>Just finished treatment</span> <span>Prostate</span> <span>Stage 3</span> <span>Surgery</span>
+                        </div>
+                        <div class="tags">
+                          <span>Walking</span> <span>Camping</span> <span>Photography</span> <span>Birdwatching</span>
+                      </div>
+                      </div>
+                  </div>
+             
+            
+                  <div class="profile-wrapper" style="margin-top: 30px;">
+                    <div class="profile-card">
+                      <img src="cath.jpeg" alt="Cath">
+                      <div class="profile-info">
+                          <div class="user-details">
+                              <h3>Cath</h3>
+                              <p>Headingley</p>
+                              <p>54</p>
+                              <h4><a href="tel:">Text</a></h4>
+                          </div>
+                          <div class="user-bio">
+                            <p>Hey my name is Cath and I'd love to speak to other people who have also gone 
+                              through surgery and had cancer before!
+                            </p>
+                          </div>
+                          <div class="tags">
+                              <span>Cancer survivor</span> <span>Just finished treatment</span> <span>Breast</span> <span>Stage 2</span> <span>Surgery</span>
+                        </div>
+                        <div class="tags">
+                          <span>Running</span> <span>Fitness</span> <span>Animals</span>
+                      </div>
+                      </div>
+                  </div>
+             
+            
+                  <div class="profile-wrapper" style="margin-top: 30px;">
+                    <div class="profile-card">
+                      <img src="anusha.jpeg" alt="Anusha">
+                      <div class="profile-info">
+                          <div class="user-details">
+                              <h3>Anusha</h3>
+                              <p>Headingley</p>
+                              <p>48</p>
+                              <h4><a href="mailto:">Email</a></h4>
+                              <h4><a href="tel:">Text</a></h4>
+                          </div>
+                          <div class="user-bio">
+                            <p>Hi I'm Anusha and I really want to meet other people who're in a similar situation to me 
+                              and have some similar interests.
+                            </p>
+                          </div>
+                          <div class="tags">
+                              <span>Cancer survivor</span> <span>Just finished treatment</span> <span>Breast</span> <span>Stage 3</span> <span>Surgery</span>
+                        </div>
+                        <div class="tags">
+                          <span>Fitness</span> <span>Reading</span> <span>Pets</span> <span>Photography</span>
+                      </div>
+                      </div>
+                  </div>
+
+                  <div class="profile-wrapper">
+                    <div class="profile-card">
+                      <img src="veronica.jpeg" alt="Veronica">
+                      <div class="profile-info">
+                          <div class="user-details">
+                              <h3>Veronica</h3>
+                              <p>Leeds City Centre</p>
+                              <p>61</p>
+                              <h4><a href="mailto:">Email</a></h4>
+                          </div>
+                          <div class="tags">
+                              <span>Cancer survivor</span> <span>Just finished treatment</span> <span>Skin</span> <span>Stage 3</span> <span>Surgery</span>
+                        </div>
+                        <div class="tags">
+                          <span>Walking</span> <span>Hiking</span> <span>Animals</span> 
+                      </div>
+                      </div>
+                  </div>
+          
+          </section>
+
+  <ul class="navigation">
+    <li><a href="discovery.php">Discover</a></li>
+    <li><a href="profilesuggestions.php" class="active">Community</a></li>
+    <li><a href="profile.php">Profile</a></li>
+    <li><a href="preferences.php">Preferences</a></li>
+</ul>
+
+</section>
+</main>
+
+</body>
+</html>
