@@ -45,3 +45,16 @@ The app uses the Perenual API to generate personalised recommendations and displ
 During the week focusing on JavaScript, I decided to create a fun game where users could play F1 Fantasy. 
 
 Users created their fantasy team with 2 teams and 5 drivers. They then submitted their team, and they got a fun message telling them how many points they'd won. The aim was to keep playing until they got into the top league of points. 
+
+### Pet Adoption API 
+
+In this assignment, I decided to create a pet adoption API. It is a Node.js and Express application that is connected to a MYSQL database. The purpose behind this is to it allow users, such as staff, who want to manage the information about the pets which are up for adoption.
+
+User can:
+- See which animals are up for adoption.
+- Add any new pets that are up for adoption.
+- Delete pets who have gone to a new home.
+- See a filtered version of animals based on whether they're interested in seeing dogs or cats.
+- This is useful in the real world because at an adoption center, members of staff need to manage available pets quickly and efficiently.
+
+This API could serve as the backend for a website that has an updated list of the animals that are up for adoption to increase the chances of the pets being adopted.
